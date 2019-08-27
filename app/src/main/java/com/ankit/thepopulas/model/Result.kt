@@ -1,17 +1,24 @@
 package com.ankit.thepopulas.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity
 data class Result(
-    val backdrop_path: String,
-    val first_air_date: String,
-    val genre_ids: List<Int>,
-    val id: Int,
-    val name: String,
-    val origin_country: List<String>,
-    val original_language: String,
-    val original_name: String,
-    val overview: String,
-    val popularity: Double,
-    val poster_path: String,
-    val vote_average: Double,
-    val vote_count: Int
+    var backdrop_path: String,
+    var first_air_date: String,
+    var genre_ids: List<Int>,
+    @PrimaryKey
+    var id: Int,
+    var name: String,
+    var origin_country: List<String>,
+    var original_language: String,
+    var original_name: String,
+    var overview: String,
+    var popularity: Double,
+    var poster_path: String,
+    var vote_average: Double,
+    var vote_count: Int
 )
+

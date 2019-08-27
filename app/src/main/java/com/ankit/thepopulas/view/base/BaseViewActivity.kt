@@ -1,6 +1,8 @@
-package com.ankit.thepopulas.base
+package com.ankit.thepopulas.view.base
 
-import android.os.Bundle
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -27,4 +29,5 @@ abstract class BaseViewActivity : AppCompatActivity(){
     fun getTheFragment(frg : Fragment): Fragment{
         return frg
     }
+
 }

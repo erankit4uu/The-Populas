@@ -1,20 +1,13 @@
 package com.ankit.thepopulas.architechture.di.modules
 
 import android.content.Context
-import com.ankit.thepopulas.architechture.AppComponent
-import com.ankit.thepopulas.architechture.di.App
-import com.ankit.thepopulas.base.BaseViewActivity
-import dagger.Binds
+import com.ankit.thepopulas.data.source.remote.TMDBApi
 import javax.inject.Singleton
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
 import dagger.Provides
 import com.squareup.picasso.Picasso
 import dagger.Module
-import dagger.android.AndroidInjector
-import dagger.multibindings.ClassKey
-import dagger.multibindings.IntoMap
-import javax.xml.datatype.DatatypeConstants.SECONDS
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,9 +20,6 @@ import com.google.gson.Gson
 
 @Module
 class AppModule {
-
-  
-
 
     /*
      * The method returns the Okhttp object
@@ -48,7 +38,6 @@ class AppModule {
         return httpClient.build()
     }
 
-
     @Provides
     @Singleton
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
@@ -60,17 +49,15 @@ class AppModule {
             .build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideService(retrofit: Retrofit):  {
-//        return retrofit.create<MovieApiService>(MovieApiService::class.java!!)
-//    }
+    @Provides
+    @Singleton
+    fun provideService(retrofit: Retrofit):  TMDBApi{
+        return retrofit.create<TMDBApi>(TMDBApi::class.java)
+    }
     @Singleton
     @Provides
     fun providePicasso(context: Context): Picasso {
         return Picasso.Builder(context).build()
     }
-//
-
 
 }
